@@ -102,6 +102,7 @@ let counter = 0;
 let prevLetter = '';
 let x=0;
 let allCards = 0;
+
 ar[0] = document.getElementById('card-grid').firstElementChild;
 document.getElementById('card-grid')
 
@@ -112,7 +113,7 @@ function onTheClick(x){
             prevLetter = randomLetters[x];
             link = x;
             count++;
-        }else if(count==1 && prevLetter===randomLetters[x] ){
+        }else if(count==1 && prevLetter===randomLetters[x]){
             ar[x].innerHTML = randomLetters[x]; 
             count = 0;
             allCards++;
