@@ -1,5 +1,3 @@
-
-//we might want to 'update' this each time we start a new game
 function randomPlacement(){
     let count = 0;
     let randomLetters = [];
@@ -70,29 +68,8 @@ function getLetterArray(){
     return newLetterArray;
 }
 
-function showLetters(){
-    let x = document.getElementById('card-grid')
-    let y = x.firstElementChild;
-    for(i=0; i<x.childElementCount; i++){
-        y.innerHTML = randomLetters[i]
-        y = y.nextElementSibling;
-    }
-}
-function hideLetters(){
-    let x = document.getElementById('card-grid')
-    let y = x.firstElementChild;
-    for(i=0; i<x.childElementCount; i++){
-        y.innerHTML = ' ';
-        y = y.nextElementSibling;
-    }
-}
 
-
-//let a,ar[1],c,d,e,f,g,h,i,j,k,l,m,n,o,p;
 let randomLetters = getLetterArray();
-for(let i=0; i<16; i++){
-    console.log(randomLetters[i])
-}
 
 let a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p;
 let ar = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p]
@@ -102,9 +79,6 @@ let counter = 0;
 let prevLetter = '';
 let x=0;
 let allCards = 0;
-
-ar[0] = document.getElementById('card-grid').firstElementChild;
-document.getElementById('card-grid')
 
 function onTheClick(x){
         counter++
@@ -136,7 +110,7 @@ function onTheClick(x){
 
 
     
-
+ar[0] = document.getElementById('card-grid').firstElementChild;
 ar[0].onclick = () => {
     if(counter!=2){
         onTheClick(0);
@@ -295,5 +269,3 @@ ar[15].onclick = () => {
         counter = 0;
     }
 }
-
-
