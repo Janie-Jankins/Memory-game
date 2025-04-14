@@ -100,9 +100,8 @@ let link = 0;
 let count = 0;
 let counter = 0;
 let prevLetter = '';
-let resetter = 0;
-let prevClicked = false;
 let x=0;
+let allCards = 0;
 ar[0] = document.getElementById('card-grid').firstElementChild;
 document.getElementById('card-grid')
 
@@ -116,6 +115,9 @@ function onTheClick(x){
         }else if(count==1 && prevLetter===randomLetters[x] ){
             ar[x].innerHTML = randomLetters[x]; 
             count = 0;
+            allCards++;
+            console.log('allCard = ',allCards);
+            
         }else if(count==1){
             ar[x].innerHTML = randomLetters[x];
             setTimeout(() => {
@@ -124,6 +126,9 @@ function onTheClick(x){
               }, 1000)
     
             count = 0;
+        }
+        if(allCards===8){
+            document.getElementsByTagName('p')[0].innerHTML = "Congratulations! you've won the game.";
         }
     
 }
@@ -291,21 +296,3 @@ ar[15].onclick = () => {
 }
 
 
-//x = x.nextElementSibling;
-//x.onclick = () =>  x.innerHTML = randomLetters[1];
- 
-
-
-/*for(let i=0; i<x.childElementCount; i++){
-    console.log(y.innerHTML);
-    y = y.nextElementSibling;
-    
-*/
-
-
-                        
-/*y = y.nextElementSibling;
-
-
-document.getElementById('card-grid').firstElementChild.onclick = () => showLetters(); 
-document.getElementById('card-grid').lastElementChild.onclick = () => hideLetters();*/
