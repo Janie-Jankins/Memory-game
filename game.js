@@ -1,110 +1,87 @@
-function randomPlacement(){
+function randomize(){
     let count = 0;
-    let randomLetters = [];
+    let list = [];
     let randomNumber = 0;
 
-    let tempLetters = {
-        A: 'A',
-        B: 'B',
-        C: 'C',
-        D: 'D',
-        E: 'E',
-        F: 'F',
-        G: 'G',
-        H: 'H'
-    }
-
-    while(count<8 && Object.keys(tempLetters).length!==0){
+    let tempArray = ['A','B','C','D','E','F','G','H','A','B','C','D','E','F','G','H']
+       
+    while(count<16){
         randomNumber = Math.random();
-        if(randomNumber >= 0 && randomNumber < 1/8 && ('A' in tempLetters)){
-            randomLetters[count] = 'A';
+        if(randomNumber >= 0 && randomNumber < 1/8 && (tempArray.includes('A'))){
+            list.push('A');
             count++;
-            delete tempLetters.A;
-        }else if(randomNumber >= 1/8 && randomNumber < 2/8 && ('B' in tempLetters)){
-            randomLetters[count] = 'B';
+            delete tempArray[tempArray.indexOf('A')];
+        }else if(randomNumber >= 1/8 && randomNumber < 2/8 && (tempArray.includes('B'))){
+            list.push('B');
             count++;
-            delete tempLetters.B;
-        }else if(randomNumber >= 2/8 && randomNumber < 3/8 && ('C' in tempLetters)){
-            randomLetters[count] = 'C';
+            delete tempArray[tempArray.indexOf('B')];
+        }else if(randomNumber >= 2/8 && randomNumber < 3/8 && (tempArray.includes('C'))){
+            list.push('C');
             count++;
-            delete tempLetters.C;
-        }else if(randomNumber >= 3/8 && randomNumber < 4/8 && ('D' in tempLetters)){
-            randomLetters[count] = 'D';
+            delete tempArray[tempArray.indexOf('C')];
+        }else if(randomNumber >= 3/8 && randomNumber < 4/8 && (tempArray.includes('D'))){
+            list.push('D');
             count++;
-            delete tempLetters.D;
-        }else if(randomNumber >= 4/8 && randomNumber < 5/8 && ('E' in tempLetters)){
-            randomLetters[count] = 'E';
+            delete tempArray[tempArray.indexOf('D')];
+        }else if(randomNumber >= 4/8 && randomNumber < 5/8 && (tempArray.includes('E'))){
+            list.push('E');
             count++;
-            delete tempLetters.E;
-        }else if(randomNumber >= 5/8 && randomNumber < 6/8 && ('F' in tempLetters)){
-            randomLetters[count] = 'F';
+            delete tempArray[tempArray.indexOf('E')];
+        }else if(randomNumber >= 5/8 && randomNumber < 6/8 && (tempArray.includes('F'))){
+            list.push('F');
             count++;
-            delete tempLetters.F;
-        }else if(randomNumber >= 6/8 && randomNumber < 7/8 && ('G' in tempLetters)){
-            randomLetters[count] = 'G';
+            delete tempArray[tempArray.indexOf('F')];
+        }else if(randomNumber >= 6/8 && randomNumber < 7/8 && (tempArray.includes('G'))){
+            list.push('G');
             count++;
-            delete tempLetters.G;
-        }else if(randomNumber >= 7/8 && randomNumber < 8/8 && ('H' in tempLetters)){
-            randomLetters[count] = 'H';
+            delete tempArray[tempArray.indexOf('G')];
+        }else if(randomNumber >= 7/8 && randomNumber < 8/8 && (tempArray.includes('H'))){
+            list.push('H');
             count++;
-            delete tempLetters.H;
+            delete tempArray[tempArray.indexOf('H')];
         }
     }
-    return randomLetters;
-}
+    return list;
 
-function getLetterArray(){
-    let firstArray = randomPlacement();
-    let secondArray = randomPlacement();
-    let newLetterArray = [];
-
-
-    for(let i=0; i<firstArray.length; i++){
-        newLetterArray.push(firstArray[i]) 
-    }
-    for(let i=0; i<secondArray.length; i++){
-        newLetterArray.push(secondArray[i]) 
-    }
-    return newLetterArray;
 }
 
 
-let randomLetters = getLetterArray();
+let list = randomize();
 
 let a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p;
 let ar = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p]
-let link = 0;
 let count = 0;
+let link = 0;
 let counter = 0;
 let prevLetter = '';
 let x=0;
 let allCards = 0;
 
 function onTheClick(x){
-        counter++
-        if(count === 0){
-            ar[x].innerHTML = randomLetters[x]; 
-            prevLetter = randomLetters[x];
-            link = x;
-            count++;
-        }else if(count==1 && prevLetter===randomLetters[x]){
-            ar[x].innerHTML = randomLetters[x]; 
-            count = 0;
-            allCards++;
-            console.log('allCard = ',allCards);
-            
-        }else if(count==1){
-            ar[x].innerHTML = randomLetters[x];
-            setTimeout(() => {
-                ar[x].innerHTML = '';
-                ar[link].innerHTML = '';
-              }, 1000)
-    
-            count = 0;
-        }
-        if(allCards===8){
-            document.getElementsByTagName('p')[0].innerHTML = "Congratulations! you've won the game.";
-        }
+    counter++
+    if(count === 0){
+        ar[x].innerHTML = list[x]; 
+        prevLetter = list[x];
+        link = x;
+        count++;
+    }else if(count==1 && prevLetter===list[x]){
+        ar[x].innerHTML = list[x]; 
+        count = 0;
+        allCards++;
+        console.log('allCard = ',allCards);
+        
+    }else if(count==1){
+        ar[x].innerHTML = list[x];
+        setTimeout(() => {
+            ar[x].innerHTML = '';
+            ar[link].innerHTML = '';
+            }, 1000)
+
+        count = 0;
+    }
+    if(allCards===8){
+        document.getElementsByTagName('p')[0].innerHTML = "Congratulations! you've won the game.";
+    }
     
 }
 
