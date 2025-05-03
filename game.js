@@ -80,7 +80,7 @@ function onTheClick(x){
         count = 0;
     }
     if(allCards===8){
-        document.getElementsByTagName('p')[0].innerHTML = "Congratulations! you've won the game.";
+        document.getElementsByTagName('p')[0].innerHTML = "Congratulations! you've won the game";
     }
     
 }
@@ -245,4 +245,9 @@ ar[15].onclick = () => {
     else{
         counter = 0;
     }
+}
+
+
+document.getElementById('first-button').onclick = function() {
+    alert("To play:\n1. Click on a block Once to see a Letter\n2. Click on another block to see a second Letter\n3. Try to find a match for each Letter")
 }
